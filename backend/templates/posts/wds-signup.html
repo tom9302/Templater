@@ -1,0 +1,151 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <style> 
+ 	 .blog-preview-wrapper{ 
+ 	margin-bottom:3rem; 
+ 	padding-bottom:2rem
+ } 
+ 
+body{ 
+ 	font-family:var(--font-body); 
+ 	font-size:1rem; 
+ 	font-size:clamp(1rem,.4626rem + 1.0309vw + var(--user-font-scale),1.125rem); 
+ 	line-height:1.625
+ } 
+ 
+:root{ 
+ 	--theme-tag-hover-bg: var(--theme-accent-light); 
+ 	--theme-tag-focus-bg: var(--theme-accent-dark); 
+ 	--theme-tag-focus-text: var(--color-white); 
+ 	--theme-tag-count-bg: var(--color-gray-700)
+ } 
+ 
+:root{ 
+ 	--font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; 
+ 	--font-body: "IBM Plex Sans", var(--font-fallback); 
+ 	--font-mono: "IBM Plex Mono", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace; 
+ 	--color-white: #fff; 
+ 	--color-black: #161a1d; 
+ 	--color-gray-50: #f9fafb; 
+ 	--color-gray-100: #f3f4f6; 
+ 	--color-gray-200: #e5e7eb; 
+ 	--color-gray-300: #d1d5db; 
+ 	--color-gray-400: #9ca3af; 
+ 	--color-gray-500: #6b7280; 
+ 	--color-gray-600: #4b5563; 
+ 	--color-gray-700: #374151; 
+ 	--color-gray-800: #1f2937; 
+ 	--color-gray-900: #111827; 
+ 	--color-blue: hsl(200, 100%, 50%); 
+ 	--color-blue-hsl: 200, 100%, 50%; 
+ 	--color-blue-light: hsl(200, 100%, 75%); 
+ 	--color-blue-dark: hsl(200, 100%, 30%); 
+ 	--color-blue-dark-hsl: 200, 100%, 30%; 
+ 	--color-green: hsl(158, 78%, 42%); 
+ 	--color-green-dark: hsl(158, 78%, 22%); 
+ 	--color-orange: hsl(21, 100%, 60%); 
+ 	--color-orange-dark: hsl(21, 100%, 40%); 
+ 	--color-purple-hover: hsl(269, 79%, 84%); 
+ 	--color-purple: hsl(269, 79%, 74%); 
+ 	--color-purple-dark-hover: hsl(269, 79%, 54%); 
+ 	--color-purple-dark: hsl(269, 79%, 44%); 
+ 	--color-red: hsl(350, 100%, 54%); 
+ 	--color-red-dark: hsl(350, 100%, 44%); 
+ 	--color-yellow: hsl(41, 100%, 58%); 
+ 	--color-yellow-dark: hsl(41, 100%, 38%)
+ } 
+ 
+:root{ 
+ 	color-scheme:light; 
+ 	--theme-accent: var(--color-blue); 
+ 	--theme-accent-light: var(--color-blue-light); 
+ 	--theme-accent-dark: var(--color-blue-dark); 
+ 	--theme-accent-hsl: var(--color-blue-hsl); 
+ 	--theme-accent-opacity: .1; 
+ 	--theme-divider: var(--color-gray-100); 
+ 	--theme-text: var(--color-gray-800); 
+ 	--theme-text-light: var(--color-gray-600); 
+ 	--theme-text-lighter: var(--color-gray-400); 
+ 	--theme-bg: var(--color-white); 
+ 	--theme-bg-accent: hsla(var(--theme-accent-hsl), var(--theme-accent-opacity)); 
+ 	--theme-code-inline-bg: var(--color-gray-200); 
+ 	--theme-code-text: var(--color-gray-100); 
+ 	--theme-code-bg: #272822; 
+ 	--theme-code-highlight-bg: var(--color-gray-800); 
+ 	--theme-popup-bg: var(--color-gray-200); 
+ 	--theme-tangent-bg: var(--color-gray-200); 
+ 	--theme-tangent-border: var(--color-gray-300); 
+ 	--theme-tangent-code-inline-bg: var(--color-gray-400); 
+ 	--theme-red: var(--color-red); 
+ 	--theme-blue: var(--color-blue); 
+ 	--theme-green: var(--color-green); 
+ 	--theme-orange: var(--color-orange); 
+ 	--theme-purple: var(--color-purple); 
+ 	--theme-yellow: var(--color-yellow); 
+ 	--theme-purple-hover: var(--color-purple-hover)
+ } 
+ 
+:root{ 
+ 	--user-font-scale: 1rem - 16px
+ } 
+ 
+:root{ 
+ 	--gray: var(--color-gray-300)
+ } 
+ 
+.wrapper{ 
+ 	margin-left:auto; 
+ 	margin-right:auto; 
+ 	max-width:80ch; 
+ 	padding-left:2rem; 
+ 	padding-right:2rem; 
+ 	width:100%
+ } 
+ 
+:is(h1, h2, h3, h4, h5, h6){ 
+ 	margin-bottom:1.38rem; 
+ 	font-weight:400; 
+ 	line-height:1.3; 
+ 	overflow-wrap:break-word
+ } 
+ 
+:is(h1, h2){ 
+ 	max-width:40ch
+ } 
+ 
+h2{ 
+ 	font-size:clamp(2.074rem,1.707rem + .9175vw,2.441rem)
+ } 
+ 
+.preview-title{ 
+ 	margin:0; 
+ 	font-size:2.25rem; 
+ 	font-weight:700; 
+ 	color:var(--theme-text)
+ } 
+ 
+.blog-post-list{ 
+ 	margin-top:5rem
+ } 
+ 
+p{ 
+ 	color:var(--theme-text-light)
+ } 
+ 
+
+
+  </style>
+
+  <body> 
+ 	 <article class="blog-preview-wrapper"><header style="align-items:flex-start;display:flex;flex-direction:column;justify-content:center;padding-bottom:1rem;text-align:left"><h2 class="preview-title"><a class="preview-title" href="/2024-10/css-quantity-queries">CSS Quantity Queries Are Really Cool</a></h2><p style="margin:0;font-size:1rem;color:var(--theme-text-lighter);display:flex;flex-direction:column"><span style="text-decoration:none">October 21, 2024</span></p><div style="display:flex;flex-wrap:wrap"><label class="tag-label" style="margin-top:.25em"><span class="tag-name" style="border-radius:.25em">CSS</span></label></div></header><p>Quantity queries are an incredible CSS feature that allows you to style elements based on the number of elements in a container without using any JavaScript at all.</p><a href="/2024-10/css-quantity-queries">Read more</a></article>
+    
+  </body>
+</html>
