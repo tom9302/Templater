@@ -1,8 +1,8 @@
 const express = require("express")
 const path = require("path")
 
-const { scrapeTemplate } = require("./functions/puppeteerFunctions")
-const { createTemplate } = require("./functions/fileSystemFunctions")
+const { scrapeTemplate, takeScreenshot } = require("./functions/puppeteerFunctions")
+const { createTemplate, copyReadWrite } = require("./functions/fileSystemFunctions")
 
 const router = express.Router()
 
@@ -33,10 +33,21 @@ router.post("/create", (req, res) => {
 })
 
 router.post("/scrape", async (req, res) => {
-    const { url, tag, id, classText, selector, templateName, selectedCategory, newCategory } = req.body
+    const { url, tag, id, classText, selector } = req.body
     const { sectionHtml, sectionCss } = await scrapeTemplate(url, selector, tag, id, classText)
-    createTemplate(templateName, selectedCategory, newCategory, sectionHtml, sectionCss)
-    res.json({ url, selector, templateName, selectedCategory, newCategory })
+    copyReadWrite(sectionHtml, sectionCss)
+    const screenshotBase64 = await takeScreenshot()
+    //const templatePath = path.resolve("template.jpg")
+    //createTemplate(sectionHtml, sectionCss)
+    //res.sendFile(templatePath)
+    res.json({ sectionHtml, sectionCss, screenshotBase64 })
+    // https://courses.webdevsimplified.com/
+    // sc-dVBluf htlnUh
+    // section
+})
+
+router.get("/template", (req, res) => {
+    res.sendFile(path.join(__dirname, "template.html"));
 })
 
 module.exports = router

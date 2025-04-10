@@ -1,11 +1,32 @@
 const puppeteer = require("puppeteer")
 const fs = require("fs")
+const path = require("path")
 
 const {
     findStartingNode, getAllDescendantNodesIds, getAllDescendantNodesStyles, cleanStyles
 } = require("./scrapingFunctions")
 
 const data2 = require("../data2.json")
+
+async function takeScreenshot() {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+
+    const templatePath = path.resolve("template.html")
+    //console.log(x)
+
+    await page.goto(templatePath);
+    await page.setViewport({ width: 1280, height: 720 });
+    const bodySection = await page.$("body");
+    const screenshot = await bodySection.screenshot({ path: "template.jpg" })
+    const screenshotBase64 = screenshot.toString("base64")
+    //const imageAsBase64 = fs.readFileSync('./template.jpg', 'base64');
+    //console.log(screenshot.toString("base64"))
+
+    await browser.close();
+
+    return screenshotBase64
+}
 
 async function readHTMLwriteJSON(url, category, template, fileName, templateImagePath, navbarPreviewPath){
     const browser = await puppeteer.launch();
@@ -225,4 +246,4 @@ async function scrapeTemplate(url, selector, tag, id, classes){
     return { sectionHtml, sectionCss }
 }
 
-module.exports = { readHTMLwriteJSON, scrapeTemplate }
+module.exports = { takeScreenshot, readHTMLwriteJSON, scrapeTemplate }

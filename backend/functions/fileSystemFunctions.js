@@ -1,20 +1,11 @@
 const fs = require("fs")
 const path = require("path")
 
-const { readHTMLwriteJSON } = require("./puppeteerFunctions")
+const { readHTMLwriteJSON, takeScreenshot } = require("./puppeteerFunctions")
 
-function createTemplate(templateName, selectedCategory, newCategory, html, css){
+function createTemplate(html, css){
     let templatePath = "./templates/";
     let templateCategory;
-
-    if(selectedCategory == "Add new..."){
-        templateCategory = newCategory.toLowerCase()
-        templatePath += templateCategory
-    }
-    else{
-        templateCategory = selectedCategory.toLowerCase()
-        templatePath += templateCategory
-    }
 
     fs.access(templatePath, (error) => {
         // To check if the given directory 
@@ -28,24 +19,24 @@ function createTemplate(templateName, selectedCategory, newCategory, html, css){
                 } else {
                     console.log("New Directory created successfully !!");
 
-                    copyReadWrite(templateName, templateCategory, html, css)
+                    copyReadWrite(html, css)
                 }
             });
         } else {
             console.log("Given Directory already exists !!");
 
-            copyReadWrite(templateName, templateCategory, html, css)
+            copyReadWrite(html, css)
         }
     });
 }
 
-function copyReadWrite(templateName, templateCategory, html, css) {
-    const newTemplatePath = "templates/" + templateCategory + "/" + templateName + ".html"
+function copyReadWrite(html, css) {
+    const newTemplatePath = "templates/template.html"
 
-    fs.copyFile("blank-file.html", newTemplatePath, (err) => {
+    fs.copyFile("blank-file.html", "template.html", (err) => {
         console.log(err)
 
-        fs.readFile(newTemplatePath, 'utf8', (err, data) => {
+        fs.readFile("template.html", 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
                 return;
@@ -54,25 +45,26 @@ function copyReadWrite(templateName, templateCategory, html, css) {
             data = data.replace("<body>", "<body> \n \t " + html)
             data = data.replace("<style>", "<style> \n \t " + css)
 
-            fs.writeFile(newTemplatePath, data, err => {
+            fs.writeFile("template.html", data, err => {
                 if (err) {
                     console.error(err);
                 } else {
+                    //takeScreenshot()
                     // file written successfully
 
-                    let normalPath =
+                    /* let normalPath =
                         path.resolve("./templates/" + templateCategory + "/", templateName + ".html")
                     let modifiedFilePath = "file:///" + normalPath.replaceAll("\\", "/")
                     let templateFileName = templateName + ".html"
                     let templateImagePath = "templates/" + templateCategory + "/" + templateName + ".jpg";
                     let navbarPreviewPath =
-                        "templates/" + templateCategory + "/" + templateName + "-preview.jpg";
+                        "templates/" + templateCategory + "/" + templateName + "-preview.jpg"; */
 
-                    readHTMLwriteJSON(modifiedFilePath, templateCategory, templateFileName, templateName, templateImagePath, navbarPreviewPath)
+                    /* readHTMLwriteJSON(modifiedFilePath, templateCategory, templateFileName, templateName, templateImagePath, navbarPreviewPath) */
                 }
             });
         });
     });
 }
 
-module.exports = { createTemplate }
+module.exports = { createTemplate, copyReadWrite }
