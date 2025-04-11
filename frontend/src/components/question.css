@@ -1,0 +1,24 @@
+.faq .question {
+    font-size: 1.5rem;
+}
+
+.faq .question-section {
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary);
+}
+
+.faq .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60% 60%;
+}
+
+.plus-icon {
+    background-image: url("../../public/icons/plus.svg");
+}
+
+.minus-icon {
+    background-image: url("../../public/icons/minus.svg");
+}

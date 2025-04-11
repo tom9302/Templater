@@ -1,0 +1,34 @@
+.feature {
+    box-shadow: 0 10px 20px 0px rgb(163, 163, 163);
+    padding: 40px;
+}
+
+.feature .icon {
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.free-icon {
+    background-image: url("../../public/icons/no-money.svg");
+}
+
+.fast-icon {
+    background-image: url("../../public/icons/fast.svg");
+}
+
+.easy-icon {
+    background-image: url("../../public/icons/easy.svg");
+}
+
+.feature .heading {
+    color: rgb(44, 44, 44);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.feature .description {
+    font-size: 0.95rem;
+}
