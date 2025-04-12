@@ -1,4 +1,4 @@
-import { Feature } from "./Feature"
+import { Feature } from "./sub-components/Feature"
 
 export function Features() {
     return (

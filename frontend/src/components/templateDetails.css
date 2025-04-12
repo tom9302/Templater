@@ -1,0 +1,30 @@
+.template-details {
+    margin-top: 130px;
+}
+
+.template-details input {
+    width: 100%;
+    padding: 12px 16px;
+    /* Coinigy-like dark card bg */
+    border: 1px solid #2D3E50;
+    /* Subtle border */
+    border-radius: 6px;
+    /* Slightly rounded corners */
+    /* White text */
+    font-family: 'Inter', sans-serif;
+    /* Coinigy likely uses Inter */
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.template-details input:hover {
+    border-color: #4F7BFF;
+    /* Coinigy’s blue accent */
+}
+
+.template-details input:focus {
+    border-color: #4F7BFF;
+    box-shadow: 0 0 0 2px rgba(79, 123, 255, 0.2);
+    /* Glow effect */
+}

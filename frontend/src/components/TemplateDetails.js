@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { CustomBtn } from "./sub-components/CustomBtn"
 import "./templateDetails.css"
 
 export function TemplateDetails() {
@@ -6,6 +8,18 @@ export function TemplateDetails() {
     const [tag, setTag] = useState("")
     const [id, setId] = useState("")
     const [classText, setClassText] = useState("")
+
+    const [templateHtml, setTemplateHtml] = useState(null)
+    const [templateCss, setTemplateCss] = useState(null)
+    const [templateImage, setTemplateImage] = useState(null)
+
+    //document.execCommand('copy')
+    //console.log(templateHtml)
+
+    useEffect(() => {
+        const image = localStorage.getItem("image")
+        setTemplateImage(image)
+    }, [])
 
     async function handleScrape() {
         var idSelector = ""
@@ -31,60 +45,80 @@ export function TemplateDetails() {
 
         if (json) {
             console.log(json)
+            setTemplateHtml(json.sectionHtml)
+            setTemplateCss(json.sectionCss)
+            const base64String = btoa(String.fromCharCode(...new Uint8Array(json.screenshot.data)));
+            setTemplateImage(base64String)
+            //console.log(base64String)
         } else {
             console.log(json)
         }
     }
 
     return (
-        <div className="d-flex flex-column w-100 h-100 justify-content-around create-section ">
-            <div className="d-flex flex-column align-items-center">
+        <div className="template-details main-wrapper mx-auto">
 
-                <h4>
-                    URL :
-                    <input
-                        type="text"
-                        className="mx-2 url-field"
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                    />
-                </h4>
+            <div className="d-flex">
+                <div className="d-flex flex-column justify-content-center gap-3 form border w-50 px-3">
+                    <div>
+                        URL :
+                        <input
+                            type="text"
+                            value={url}
+                            onChange={(e) => setUrl(e.target.value)}
+                        />
+                    </div>
 
-                <h4>
-                    Tag :
-                    <input
-                        type="text"
-                        className="mx-2"
-                        value={tag}
-                        onChange={(e) => setTag(e.target.value)}
-                    />
-                </h4>
+                    <div>
+                        Tag :
+                        <input
+                            type="text"
+                            value={tag}
+                            onChange={(e) => setTag(e.target.value)}
+                        />
+                    </div>
 
-                <h4>
-                    Id :
-                    <input
-                        type="text"
-                        className="mx-2"
-                        value={id}
-                        onChange={(e) => setId(e.target.value)}
-                    />
-                </h4>
+                    <div>
+                        Id :
+                        <input
+                            type="text"
+                            value={id}
+                            onChange={(e) => setId(e.target.value)}
+                        />
+                    </div>
 
-                <h4>
-                    Class(es) :
-                    <input
-                        type="text"
-                        className="mx-2"
-                        value={classText}
-                        onChange={(e) => setClassText(e.target.value)}
-                    />
-                </h4>
+                    <div>
+                        Class(es) :
+                        <input
+                            type="text"
+                            value={classText}
+                            onChange={(e) => setClassText(e.target.value)}
+                        />
+                    </div>
+                </div>
 
+                <div className="image d-flex flex-column align-items-center px-2 border w-50">
+                    <img src={`data:image/png;base64,${templateImage}`} width="100%" alt="" />
+
+                    <div className={templateImage ? "mt-3" : "d-none"}>
+                        <button>Copy HTML</button>
+                        <button>Copy CSS</button>
+                        <button>Download</button>
+                        <Link to="http://localhost:3001/template">Preview</Link>
+                    </div>
+                    
+                </div>
             </div>
 
-            <div className="d-flex justify-content-center">
-                <button className="col-sm-3 h3" onClick={handleScrape}>SCRAPE</button>
-                <a href="http://localhost:3001/template">DEMO</a>
+
+
+
+
+            <div className="d-flex justify-content-center mt-4">
+                <CustomBtn
+                    text="Extract Template"
+                    btnFunction={handleScrape}
+                />
             </div>
         </div>
     )

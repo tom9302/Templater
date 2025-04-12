@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer")
 const fs = require("fs")
 const path = require("path")
+const base64url = require('base64url');
 
 const {
     findStartingNode, getAllDescendantNodesIds, getAllDescendantNodesStyles, cleanStyles
@@ -8,7 +9,7 @@ const {
 
 const data2 = require("../data2.json")
 
-async function takeScreenshot() {
+async function takeScreenshot(selector) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -17,15 +18,17 @@ async function takeScreenshot() {
 
     await page.goto(templatePath);
     await page.setViewport({ width: 1280, height: 720 });
-    const bodySection = await page.$("body");
-    const screenshot = await bodySection.screenshot({ path: "template.jpg" })
-    const screenshotBase64 = screenshot.toString("base64")
+    const element = await page.$(selector);
+    const screenshot = await element.screenshot({ path: "template.jpg" })
+    //const screenshotBase64 = base64url(screenshot)
+    //console.log(screenshotBase64)
+    //const screenshotBase64 = screenshot.toString("base64url")
     //const imageAsBase64 = fs.readFileSync('./template.jpg', 'base64');
     //console.log(screenshot.toString("base64"))
 
     await browser.close();
 
-    return screenshotBase64
+    return screenshot
 }
 
 async function readHTMLwriteJSON(url, category, template, fileName, templateImagePath, navbarPreviewPath){

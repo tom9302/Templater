@@ -1,0 +1,270 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <style> 
+ 	 .infobox{ 
+ 	border:1px solid #a2a9b1; 
+ 	color:black; 
+ 	padding:0.2em; 
+ 	font-size:88%; 
+ 	line-height:1.5em; 
+ 	border-spacing:3px
+ } 
+ 
+.infobox{ 
+ 	background-color:#f8f9fa
+ } 
+ 
+.infobox{ 
+ 	margin:0.5em 0 0.5em 1em; 
+ 	float:right; 
+ 	clear:right; 
+ 	width:22em
+ } 
+ 
+.mw-body{ 
+ 	display:grid; 
+ 	grid-template:min-content min-content min-content 1fr / minmax(0,59.25rem) min-content; 
+ 	grid-template-areas:'titlebar-cx .' 'titlebar columnEnd' 'toolbar columnEnd' 'content columnEnd'
+ } 
+ 
+.vector-feature-page-tools-pinned-enabled .mw-body, .vector-feature-appearance-pinned-clientpref-1 .mw-body{ 
+ 	column-gap:24px
+ } 
+ 
+.mw-page-container, .vector-header-container .mw-header, .vector-header-container .vector-sticky-header{ 
+ 	padding-left:2.75rem; 
+ 	padding-right:2.75rem
+ } 
+ 
+.skin--responsive .mw-page-container{ 
+ 	min-width:auto
+ } 
+ 
+html, body{ 
+ 	height:100%
+ } 
+ 
+html, body{ 
+ 	font-family:sans-serif
+ } 
+ 
+html{ 
+ 	touch-action:manipulation
+ } 
+ 
+html{ 
+ 	font-size:100%
+ } 
+ 
+:root, .skin-invert, .notheme{ 
+ 	--color-base:#202122; 
+ 	--color-base-fixed:#202122; 
+ 	--color-base--hover:#404244; 
+ 	--color-emphasized:#101418; 
+ 	--color-subtle:#54595d; 
+ 	--color-placeholder:#72777d; 
+ 	--color-disabled:#a2a9b1; 
+ 	--color-disabled-emphasized:#a2a9b1; 
+ 	--color-inverted:#fff; 
+ 	--color-inverted-fixed:#fff; 
+ 	--color-progressive:#36c; 
+ 	--color-progressive--hover:#3056a9; 
+ 	--color-progressive--active:#233566; 
+ 	--color-progressive--focus:#36c; 
+ 	--color-destructive:#bf3c2c; 
+ 	--color-destructive--hover:#9f3526; 
+ 	--color-destructive--active:#612419; 
+ 	--color-destructive--focus:#36c; 
+ 	--color-visited:#6a60b0; 
+ 	--color-visited--hover:#534fa3; 
+ 	--color-visited--active:#353262; 
+ 	--color-destructive--visited:#9f5555; 
+ 	--color-destructive--visited--hover:#854848; 
+ 	--color-destructive--visited--active:#512e2e; 
+ 	--color-error:#bf3c2c; 
+ 	--color-error--hover:#9f3526; 
+ 	--color-error--active:#612419; 
+ 	--color-warning:#886425; 
+ 	--color-success:#177860; 
+ 	--color-notice:#404244; 
+ 	--color-icon-error:#f54739; 
+ 	--color-icon-warning:#ab7f2a; 
+ 	--color-icon-success:#099979; 
+ 	--color-icon-notice:#72777d; 
+ 	--color-content-added:#006400; 
+ 	--color-content-removed:#8b0000; 
+ 	--filter-invert-icon:0; 
+ 	--filter-invert-primary-button-icon:1; 
+ 	--box-shadow-color-base:#a2a9b1; 
+ 	--box-shadow-color-progressive--active:#233566; 
+ 	--box-shadow-color-progressive--focus:#36c; 
+ 	--box-shadow-color-progressive-selected:#36c; 
+ 	--box-shadow-color-progressive-selected--hover:#3056a9; 
+ 	--box-shadow-color-progressive-selected--active:#233566; 
+ 	--box-shadow-color-destructive--focus:#36c; 
+ 	--box-shadow-color-inverted:#fff; 
+ 	--box-shadow-color-alpha-base:rgba(0,0,0,0.06); 
+ 	--box-shadow-color-transparent:transparent; 
+ 	--mix-blend-mode-base:normal; 
+ 	--mix-blend-mode-blend:multiply; 
+ 	--background-color-base:#fff; 
+ 	--background-color-base-fixed:#fff; 
+ 	--background-color-neutral:#eaecf0; 
+ 	--background-color-neutral-subtle:#f8f9fa; 
+ 	--background-color-interactive:#eaecf0; 
+ 	--background-color-interactive--hover:#dadde3; 
+ 	--background-color-interactive--active:#c8ccd1; 
+ 	--background-color-interactive-subtle:#f8f9fa; 
+ 	--background-color-interactive-subtle--hover:#eaecf0; 
+ 	--background-color-interactive-subtle--active:#dadde3; 
+ 	--background-color-disabled:#dadde3; 
+ 	--background-color-disabled-subtle:#eaecf0; 
+ 	--background-color-inverted:#101418; 
+ 	--background-color-progressive:#36c; 
+ 	--background-color-progressive--hover:#3056a9; 
+ 	--background-color-progressive--active:#233566; 
+ 	--background-color-progressive--focus:#36c; 
+ 	--background-color-progressive-subtle:#f1f4fd; 
+ 	--background-color-progressive-subtle--hover:#dce3f9; 
+ 	--background-color-progressive-subtle--active:#cbd6f6; 
+ 	--background-color-destructive:#bf3c2c; 
+ 	--background-color-destructive--hover:#9f3526; 
+ 	--background-color-destructive--active:#612419; 
+ 	--background-color-destructive--focus:#36c; 
+ 	--background-color-destructive-subtle:#ffe9e5; 
+ 	--background-color-destructive-subtle--hover:#ffdad3; 
+ 	--background-color-destructive-subtle--active:#ffc8bd; 
+ 	--background-color-error:#f54739; 
+ 	--background-color-error--hover:#d74032; 
+ 	--background-color-error--active:#bf3c2c; 
+ 	--background-color-error-subtle:#ffe9e5; 
+ 	--background-color-error-subtle--hover:#ffdad3; 
+ 	--background-color-error-subtle--active:#ffc8bd; 
+ 	--background-color-warning-subtle:#fdf2d5; 
+ 	--background-color-success-subtle:#dff2eb; 
+ 	--background-color-notice-subtle:#eaecf0; 
+ 	--background-color-content-added:#a3d3ff; 
+ 	--background-color-content-removed:#ffe49c; 
+ 	--background-color-transparent:transparent; 
+ 	--background-color-backdrop-light:rgba(255,255,255,0.65); 
+ 	--background-color-backdrop-dark:rgba(0,0,0,0.65); 
+ 	--background-color-button-quiet--hover:rgba(0,24,73,0.027); 
+ 	--background-color-button-quiet--active:rgba(0,24,73,0.082); 
+ 	--background-color-input-binary--checked:#36c; 
+ 	--background-color-tab-list-item-framed--hover:rgba(255,255,255,0.3); 
+ 	--background-color-tab-list-item-framed--active:rgba(255,255,255,0.65); 
+ 	--opacity-icon-base:0.87; 
+ 	--opacity-icon-base--hover:0.74; 
+ 	--opacity-icon-base--selected:1; 
+ 	--opacity-icon-base--disabled:0.51; 
+ 	--opacity-icon-placeholder:0.51; 
+ 	--opacity-icon-subtle:0.67; 
+ 	--border-color-base:#a2a9b1; 
+ 	--border-color-subtle:#c8ccd1; 
+ 	--border-color-muted:#dadde3; 
+ 	--border-color-interactive:#72777d; 
+ 	--border-color-interactive--hover:#27292d; 
+ 	--border-color-interactive--active:#202122; 
+ 	--border-color-disabled:#c8ccd1; 
+ 	--border-color-inverted:#fff; 
+ 	--border-color-progressive:#6485d1; 
+ 	--border-color-progressive--hover:#3056a9; 
+ 	--border-color-progressive--active:#233566; 
+ 	--border-color-progressive--focus:#36c; 
+ 	--border-color-destructive:#f54739; 
+ 	--border-color-destructive--hover:#9f3526; 
+ 	--border-color-destructive--active:#612419; 
+ 	--border-color-destructive--focus:#36c; 
+ 	--border-color-error:#f54739; 
+ 	--border-color-error--hover:#9f3526; 
+ 	--border-color-error--active:#612419; 
+ 	--border-color-warning:#ab7f2a; 
+ 	--border-color-success:#099979; 
+ 	--border-color-notice:#72777d; 
+ 	--border-color-content-added:#a3d3ff; 
+ 	--border-color-content-removed:#ffe49c; 
+ 	--border-color-transparent:transparent; 
+ 	--border-color-divider:#a2a9b1; 
+ 	--outline-color-progressive--focus:#36c; 
+ 	--color-link-red:var(--color-destructive); 
+ 	--color-link-red--hover:var(--color-destructive--hover); 
+ 	--color-link-red--active:var(--color-destructive--active); 
+ 	--color-link-red--focus:var(--color-destructive--focus); 
+ 	--color-link-red--visited:var(--color-destructive--visited); 
+ 	--color-link-red--visited--hover:var(--color-destructive--visited--hover); 
+ 	--color-link-red--visited--active:var(--color-destructive--visited--active); 
+ 	--accent-color-base:#36c; 
+ 	--border-color-input--hover:var(--border-color-interactive); 
+ 	--border-color-input-binary:var(--border-color-interactive); 
+ 	--border-color-input-binary--hover:var(--border-color-progressive--hover); 
+ 	--border-color-input-binary--active:var(--border-color-progressive--active); 
+ 	--border-color-input-binary--focus:var(--border-color-progressive--focus); 
+ 	--border-color-input-binary--checked:var(--border-color-progressive); 
+ 	--color-base--subtle:#54595d
+ } 
+ 
+.vector-feature-custom-font-size-clientpref-1{ 
+ 	--font-size-medium:1rem; 
+ 	--line-height-medium:1.6
+ } 
+ 
+.client-js.vector-sticky-header-enabled{ 
+ 	scroll-padding-top:calc(3.125rem + 75px)
+ } 
+ 
+.infobox .infobox-above, .infobox .infobox-title, .infobox caption{ 
+ 	font-size:125%; 
+ 	font-weight:bold; 
+ 	text-align:center
+ } 
+ 
+.vector-body{ 
+ 	font-size:var(--font-size-medium); 
+ 	line-height:var(--line-height-medium)
+ } 
+ 
+.mw-body #bodyContent{ 
+ 	grid-area:content
+ } 
+ 
+.infobox-label, .infobox-data, .infobox th, .infobox td{ 
+ 	text-align:left
+ } 
+ 
+.infobox .infobox-header, .infobox .infobox-subheader, .infobox .infobox-image, .infobox .infobox-full-data, .infobox .infobox-below{ 
+ 	text-align:center
+ } 
+ 
+.mw-parser-output a{ 
+ 	word-wrap:break-word
+ } 
+ 
+.infobox-header, .infobox-label, .infobox-above, .infobox-full-data, .infobox-data, .infobox-below, .infobox-subheader, .infobox-image, .infobox-navbar, .infobox th, .infobox td{ 
+ 	vertical-align:top
+ } 
+ 
+.mw-parser-output a.external{ 
+ 	background-image:url(https://en.wikipedia.org/wiki/W3Schools/w/skins/Vector/resources/skins.vector.styles/images/link-external-small-ltr-progressive.svg?fb64d); 
+ 	background-position:center right; 
+ 	background-repeat:no-repeat; 
+ 	background-size:0.857em; 
+ 	padding-right:1em
+ } 
+ 
+
+
+  </style>
+
+  <body> 
+ 	 <table class="infobox vcard"><caption class="infobox-title fn org">W3Schools</caption><tbody><tr><td colspan="2" class="infobox-image"><span typeof="mw:File"><a href="/wiki/File:W3Schools_logo.svg" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a0/W3Schools_logo.svg/120px-W3Schools_logo.svg.png" decoding="async" width="100" height="94" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a0/W3Schools_logo.svg/250px-W3Schools_logo.svg.png 1.5x" data-file-width="512" data-file-height="482"></a></span></td></tr><tr><th scope="row" class="infobox-label"><div style="display: inline-block; line-height: 1.2em; padding: .1em 0;">Type of site</div></th><td class="infobox-data">Web development portal</td></tr><tr><th scope="row" class="infobox-label">Available&nbsp;in</th><td class="infobox-data">Multiple languages</td></tr><tr><th scope="row" class="infobox-label">Owner</th><td class="infobox-data">Refsnes Data AS</td></tr><tr><th scope="row" class="infobox-label">Created&nbsp;by</th><td class="infobox-data">Refsnes Data AS</td></tr><tr><th scope="row" class="infobox-label">URL</th><td class="infobox-data url"><span class="url"><a rel="nofollow" class="external text" href="https://www.w3schools.com">www<wbr>.w3schools<wbr>.com</a></span></td></tr><tr><th scope="row" class="infobox-label">Commercial</th><td class="infobox-data">Yes</td></tr><tr><th scope="row" class="infobox-label">Registration</th><td class="infobox-data">Required for <a href="/wiki/Internet_forum" title="Internet forum">forum</a></td></tr><tr><th scope="row" class="infobox-label">Launched</th><td class="infobox-data">1998<span class="noprint">; 27&nbsp;years ago</span><span style="display:none">&nbsp;(<span class="bday dtstart published updated">1998</span>)</span></td></tr><tr><th scope="row" class="infobox-label">Current&nbsp;status</th><td class="infobox-data category">Active</td></tr></tbody></table>
+    
+  </body>
+</html>

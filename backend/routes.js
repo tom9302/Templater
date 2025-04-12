@@ -36,11 +36,12 @@ router.post("/scrape", async (req, res) => {
     const { url, tag, id, classText, selector } = req.body
     const { sectionHtml, sectionCss } = await scrapeTemplate(url, selector, tag, id, classText)
     copyReadWrite(sectionHtml, sectionCss)
-    const screenshotBase64 = await takeScreenshot()
+    const screenshot = await takeScreenshot(selector)
     //const templatePath = path.resolve("template.jpg")
     //createTemplate(sectionHtml, sectionCss)
     //res.sendFile(templatePath)
-    res.json({ sectionHtml, sectionCss, screenshotBase64 })
+    //console.log({ sectionHtml, sectionCss, screenshotBase64 })
+    res.json({ sectionHtml, sectionCss, screenshot })
     // https://courses.webdevsimplified.com/
     // sc-dVBluf htlnUh
     // section

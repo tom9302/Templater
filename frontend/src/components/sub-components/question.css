@@ -16,9 +16,9 @@
 }
 
 .plus-icon {
-    background-image: url("../../public/icons/plus.svg");
+    background-image: url("../../../public/icons/plus.svg");
 }
 
 .minus-icon {
-    background-image: url("../../public/icons/minus.svg");
+    background-image: url("../../../public/icons/minus.svg");
 }

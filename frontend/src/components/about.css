@@ -1,0 +1,32 @@
+.about {
+    margin-top: 130px;
+    background-color: #121b24;
+    color: #acb4bd;
+}
+
+.about .site-title {
+    font-size: 2rem;
+}
+
+.about i {
+    color: white;
+}
+
+.about .learn {
+    color: #acb4bd;
+}
+
+.about .learn-divider {
+    border-left: 1px solid #314253;
+}
+
+.about .socials > div {
+    background-color: #162b3c;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}

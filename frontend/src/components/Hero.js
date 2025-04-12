@@ -1,3 +1,4 @@
+import { CustomBtn } from "./sub-components/CustomBtn"
 import "./hero.css"
 
 export function Hero() {
@@ -12,9 +13,7 @@ export function Hero() {
                     <div className="description">
                         Effortlessly scrape and save HTML snippets with precision—no coding required.
                     </div>
-                    <button className="custom-btn rounded-pill text-white py-3 px-5 w-100">
-                        Extract For Free
-                    </button>
+                    <CustomBtn text="Extract For Free" />
                 </div>
 
                 <div className="banner-img w-50">

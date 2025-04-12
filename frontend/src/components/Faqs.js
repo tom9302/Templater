@@ -1,4 +1,4 @@
-import { Question } from "./Question"
+import { Question } from "./sub-components/Question"
 import "./faqs.css"
 
 export function Faqs() {

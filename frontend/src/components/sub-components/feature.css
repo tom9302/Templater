@@ -12,15 +12,15 @@
 }
 
 .free-icon {
-    background-image: url("../../public/icons/no-money.svg");
+    background-image: url("../../../public/icons/no-money.svg");
 }
 
 .fast-icon {
-    background-image: url("../../public/icons/fast.svg");
+    background-image: url("../../../public/icons/fast.svg");
 }
 
 .easy-icon {
-    background-image: url("../../public/icons/easy.svg");
+    background-image: url("../../../public/icons/easy.svg");
 }
 
 .feature .heading {
