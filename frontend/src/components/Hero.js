@@ -6,7 +6,7 @@ export function Hero() {
         <div className="hero">
             <div className="main-wrapper mx-auto d-flex justify-content-between">
 
-                <div className="general-description d-flex flex-column justify-content-center">
+                <div className="general-description d-flex flex-column justify-content-center mb-3">
                     <div className="heading">
                         Extract Any Website Section in Seconds!
                     </div>

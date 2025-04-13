@@ -1,0 +1,71 @@
+.contact {
+    background-color: var(--primary);
+    margin-top: 130px;
+}
+
+.contact .main-wrapper {
+    flex-direction: column;
+}
+
+.contact .heading {
+    font-size: 3rem;
+    color: white;
+    line-height: 100%;
+    margin-left: var(--main-wrapper-space-x);
+}
+
+.contact .form, .contact .general-description {
+    width: 100%;
+}
+
+.improve, .support {
+    background-color: white;
+}
+
+.contact .image {
+    width: 80px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.improve .image {
+    background-image: url("../../public/images/books.png");
+}
+
+.support .image {
+    background-image: url("../../public/images/support.png");
+}
+
+.contact .description {
+    width: 75%;
+    font-size: 0.9rem;
+}
+
+.contact .input-field {
+    width: 100%;
+    padding: 12px 16px;
+    /* Coinigy-like dark card bg */
+    border: 1px solid #2D3E50;
+    /* Subtle border */
+    border-radius: 6px;
+    /* Slightly rounded corners */
+    /* White text */
+    font-family: 'Inter', sans-serif;
+    /* Coinigy likely uses Inter */
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.contact .input-field:hover {
+    border-color: #4F7BFF;
+    /* Coinigy’s blue accent */
+}
+
+.contact .input-field:focus {
+    border-color: #4F7BFF;
+    box-shadow: 0 0 0 2px rgba(79, 123, 255, 0.2);
+    /* Glow effect */
+}

@@ -5,6 +5,85 @@
   --secondary: #28c78f;
 }
 
+@media only screen and (min-width: 720px) {
+  .navbar .nav-links {
+    width: fit-content !important;
+    position: static;
+    height: auto;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: end;
+    padding: 18px;
+    font-size: 1.7rem;
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  .navbar .fa-bars, .navbar .fa-x {
+    display: none;
+  }
+
+  .navbar .nav-links a {
+    color: white;
+    transition: 0.3s;
+  }
+
+  .navbar .nav-links a:hover {
+    color: black;
+    transition: 0.3s;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .navbar .logo-title {
+    display: block;
+  }
+
+  .navbar .nav-links {
+    margin: 0;
+  }
+
+  .hero .general-description {
+    width: 35%;
+    row-gap: 35px;
+    text-align: left;
+  }
+
+  .hero .custom-btn {
+    width: 100%;
+  }
+  
+  .banner-img {
+    display: block;
+  }
+
+  .features {
+    flex-direction: row !important;
+  }
+
+  .template-details > div {
+    flex-direction: row;
+  }
+  
+  .template-details .image, .template-details .form {
+    width: 50%;
+  }
+
+  .faqs {
+    padding: 0 120px;
+  }
+
+  .contact .main-wrapper {
+    flex-direction: row;
+  }
+
+  .contact .form, .contact .general-description {
+    width: 50%;
+  }
+
+  
+}
+
 .main-wrapper {
   width: var(--main-wrapper-width);
 }

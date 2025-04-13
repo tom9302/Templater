@@ -4,7 +4,7 @@ export function About() {
     return (
         <div className="about py-5">
             <div className="main-wrapper mx-auto d-flex justify-content-between align-items-center">
-                <div className="w-50 d-flex">
+                <div className="d-flex info">
                     <div className="mx-auto">
                         <div className="site-title fw-bold text-white">Templater</div>
 
@@ -24,7 +24,7 @@ export function About() {
                     
                 </div>
 
-                <div className="w-50 d-flex learn-divider">
+                <div className="d-flex learn-divider">
                     <div className="mx-auto">
                         <div className="text-white fw-bold">Learn</div>
                         <div className="learn d-flex flex-column gap-2 mt-3">

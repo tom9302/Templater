@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { CustomBtn } from "./sub-components/CustomBtn"
 import "./templateDetails.css"
@@ -12,6 +12,9 @@ export function TemplateDetails() {
     const [templateHtml, setTemplateHtml] = useState(null)
     const [templateCss, setTemplateCss] = useState(null)
     const [templateImage, setTemplateImage] = useState(null)
+
+    const downloadRef = useRef()
+    const [donwloadHref, setDonwloadHref] = useState(null)
 
     //document.execCommand('copy')
     //console.log(templateHtml)
@@ -55,11 +58,34 @@ export function TemplateDetails() {
         }
     }
 
+    function copyCode(code) {
+        const clipBoard = navigator.clipboard;
+        clipBoard.writeText(code);
+    }
+
+    async function fetchTemplate() {
+        const response = await fetch("http://localhost:3001/template", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/html"
+            }
+        })
+        const blob = await response.blob()
+
+        if(blob) {
+            console.log(blob)
+            const url = window.URL.createObjectURL(blob)
+            downloadRef.current.href = url
+            //downloadRef.current.setAttribute("download", "template.html")
+            console.log(url)
+        }
+    }
+
     return (
         <div className="template-details main-wrapper mx-auto">
 
             <div className="d-flex">
-                <div className="d-flex flex-column justify-content-center gap-3 form border w-50 px-3">
+                <div className="d-flex flex-column justify-content-center gap-3 form px-3">
                     <div>
                         URL :
                         <input
@@ -97,24 +123,41 @@ export function TemplateDetails() {
                     </div>
                 </div>
 
-                <div className="image d-flex flex-column align-items-center px-2 border w-50">
+                <div className="image d-flex flex-column align-items-center px-2">
                     <img src={`data:image/png;base64,${templateImage}`} width="100%" alt="" />
 
                     <div className={templateImage ? "mt-3" : "d-none"}>
-                        <button>Copy HTML</button>
-                        <button>Copy CSS</button>
-                        <button>Download</button>
-                        <Link to="http://localhost:3001/template">Preview</Link>
+                        <div className="d-flex gap-5">
+                            <div className="d-flex align-items-center gap-4">
+                                <i className="fa-solid fa-code"></i>
+                                <Link onClick={() => copyCode(templateHtml)}>Copy HTML</Link>
+                            </div>
+                            <div className="d-flex align-items-center gap-4">
+                                <i className="fa-solid fa-hashtag"></i>
+                                <Link onClick={() => copyCode(templateCss)}>Copy CSS</Link>
+                            </div>
+                        </div>
+                        <div className="d-flex gap-5 justify-content-between mt-3">
+                            <div className="d-flex align-items-center gap-4">
+                                <i className="fa-solid fa-eye"></i>
+                                <Link to="http://localhost:3001/template" target="_blank">Preview</Link>
+                            </div>
+                            <div className="d-flex align-items-center gap-4">
+                                <i className="fa-solid fa-download"></i>
+                                <Link
+                                    
+                                    to="http://localhost:3001/template.html"
+                                    download>
+                                        Download
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
 
-
-
-
-
-            <div className="d-flex justify-content-center mt-4">
+            <div className="d-flex justify-content-center mt-5">
                 <CustomBtn
                     text="Extract Template"
                     btnFunction={handleScrape}

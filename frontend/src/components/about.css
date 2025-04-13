@@ -1,8 +1,22 @@
 .about {
-    margin-top: 130px;
     background-color: #121b24;
     color: #acb4bd;
 }
+
+.about .main-wrapper {
+    width: 100%;
+}
+
+.about .info, .about .learn-divider {
+    width: 50%;
+}
+/* .about .main-wrapper {
+    flex-direction: column;
+}
+
+.about .info, .about .learn-divider {
+    width: 100%;
+} */
 
 .about .site-title {
     font-size: 2rem;

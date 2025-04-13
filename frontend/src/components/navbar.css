@@ -2,21 +2,49 @@
     left: var(--main-wrapper-space-x);
 }
 
+.navbar i {
+    cursor: pointer;
+}
+
+.navbar .fa-bars {
+    display: block;
+    font-size: 1.7rem;
+    top: 24px;
+    left: 0;
+}
+
 .navbar .logo-title {
     font-size: 2rem;
     font-weight: 600;
     color: white;
     text-decoration: none;
+    display: none;
+}
+
+.navbar .nav-links {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    padding: 18px;
+    font-size: 1.7rem;
+    overflow: hidden;
+    background-color: white;
+}
+
+.navbar .fa-x {
+    color: black;
 }
 
 .navbar .nav-links a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 1.2rem;
     transition: 0.3s;
+    width: fit-content;
 }
 
 .navbar .nav-links a:hover {
-    color: black;
+    color: var(--primary);
     transition: 0.3s;
 }
