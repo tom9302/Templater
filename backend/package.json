@@ -1,5 +1,5 @@
 {
-  "name": "templates-factory",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,25 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "base64url": "^3.0.1",
     "cors": "^2.8.5",
-    "css-to-js-object": "^0.0.3",
-    "css-to-object": "^1.1.0",
     "dotenv": "^16.4.7",
-    "ejs": "^3.1.9",
     "express": "^4.19.2",
-    "open": "^10.1.0",
-    "pkg": "^5.8.1",
-    "puppeteer": "^22.6.1",
-    "style-to-object": "^1.0.6",
-    "transform-css-to-js": "^0.1.1"
+    "puppeteer": "^22.6.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"
-  },
-  "pkg": {
-    "assets": [
-      "templates/**/*.html"
-    ]
   }
 }

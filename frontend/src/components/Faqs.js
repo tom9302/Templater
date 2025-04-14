@@ -17,7 +17,7 @@ export function Faqs() {
     }
 
     return (
-        <div className="faqs main-wrapper mx-auto">
+        <div id="faqs" className="faqs main-wrapper mx-auto">
             <Question
                 question={questions.question1}
                 answer={answers.answer1}

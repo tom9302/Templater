@@ -1,0 +1,44 @@
+.how {
+    margin-top: 130px;
+}
+
+.how .heading {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.how .main {
+    flex-direction: column;
+}
+
+.how .main > div {
+    width: 100%;
+}
+
+.how .absolute-image {
+    top: 200px;
+    left: 100px;
+}
+
+.how .steps {
+    padding: 0 100px;
+    font-size: 1.1rem;
+    margin-top: 280px;
+}
+
+.how .step-index {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #394af0;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 1px var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    position: absolute;
+    left: 0;
+}
+
+.how .step {
+    margin-left: 50px;
+}

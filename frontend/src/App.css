@@ -1,7 +1,7 @@
 :root {
   --main-wrapper-width: 70%;
   --main-wrapper-space-x: 15%;
-  --primary: #717deb;
+  --primary: #394af0;
   --secondary: #28c78f;
 }
 
@@ -61,6 +61,10 @@
     flex-direction: row !important;
   }
 
+  .template-details {
+    margin-top: 330px;
+  }
+
   .template-details > div {
     flex-direction: row;
   }
@@ -81,7 +85,21 @@
     width: 50%;
   }
 
-  
+  .how .main {
+    flex-direction: row !important;
+  }
+
+  .how .main > div {
+    width: 50%;
+  }
+
+  .how .steps {
+    margin-top: 80px !important;
+  }
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .main-wrapper {

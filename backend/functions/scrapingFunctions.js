@@ -2,10 +2,12 @@ async function getNodeStyles(cdp, id){
     const node = await cdp.send("DOM.describeNode", {
         nodeId: id
     })
-    if(node.node.nodeType == 1){
+
+    if(node.node.nodeType == 1) {
         const nodeStyles = await cdp.send("CSS.getMatchedStylesForNode", {
             nodeId: id
         })
+
         return nodeStyles
     }  
 }
@@ -13,11 +15,13 @@ async function getNodeStyles(cdp, id){
 async function getAllDescendantNodesStyles(cdp, nodesIds){
     let allNodesStyles = []
 
-    for(var a = 0; a < nodesIds.length; a++){
+    for(var a = 0; a < nodesIds.length; a++) {
         let nodeStyles = await getNodeStyles(cdp, nodesIds[a])
+
         if(nodeStyles){
             allNodesStyles.push(nodeStyles.matchedCSSRules)
-            for(var z = 3; z < nodeStyles.inherited.length; z++){
+
+            for(var z = 3; z < nodeStyles.inherited.length; z++) {
                 allNodesStyles.push(nodeStyles.inherited[z].matchedCSSRules)
             }
         }
@@ -30,27 +34,32 @@ function cleanStyles(allNodesStyles, url){
     let cleanedStyles = ""
     let cssRulesArray = []
 
-    for(var n = 0; n < allNodesStyles.length; n++){
-        for(var x = 3; x < allNodesStyles[n].length; x++){
+    for(var n = 0; n < allNodesStyles.length; n++) {
+        for(var x = 3; x < allNodesStyles[n].length; x++) {
 
             let cssSegment = ""
             let selectorsList = allNodesStyles[n][x].rule.selectorList.text
             cssSegment += selectorsList
             cssSegment += "{ \n"
             let cssRule = allNodesStyles[n][x].rule.style.cssText
-            if(cssRule && cssRule.includes("background-image")){
+
+            if(cssRule && cssRule.includes("background-image")) {
                 cssRule = cssRule.replace("url(", "url(" + url)
             }
+
             let cssLine = " \t"
-            for(var q = 0; cssRule && (q < cssRule.length); q++){
+
+            for(var q = 0; cssRule && (q < cssRule.length); q++) {
                 cssLine += cssRule[q]
                 if(cssRule[q] == ";"){
                     cssLine += " \n \t"
                 }
             }
+
             cssSegment += cssLine
             cssSegment += "\n } \n \n"
-            if(!cssRulesArray.find(e => e == cssSegment)){
+
+            if(!cssRulesArray.find(e => e == cssSegment)) {
                 cssRulesArray.push(cssSegment)
                 cleanedStyles += cssSegment
             }
@@ -63,9 +72,11 @@ function cleanStyles(allNodesStyles, url){
 function getAllDescendantNodesIds(node, nodesIds){
     let id = node.nodeId
     nodesIds.push(id)
-    if(node.childNodeCount > 0){
+
+    if(node.childNodeCount > 0) {
         node.children.map(e => getAllDescendantNodesIds(e, nodesIds))
     }
+
     return nodesIds
 }
 
@@ -75,7 +86,7 @@ function verifyNode(node){
     let classTextIndex
     let classText
 
-    if(node.hasOwnProperty("attributes")){
+    if(node.hasOwnProperty("attributes")) {
         idIndex = node.attributes.indexOf("id") + 1
         id = node.attributes[idIndex]
 
@@ -87,17 +98,19 @@ function verifyNode(node){
 }
 
 function findStartingNode(node, sentTag, sentId, sentClasses){
-    if(node.nodeType == 1){
-        if(node.childNodeCount > 0){
-            for(var x = 0; x < node.children.length; x++){
+    if(node.nodeType == 1) {
+        if(node.childNodeCount > 0) {
+            for(var x = 0; x < node.children.length; x++) {
                 let currentNode = node.children[x]
                 const { tag, id, classText } = verifyNode(currentNode)
 
-                if(tag == sentTag && (id == sentId || classText == sentClasses)){
+                if(tag == sentTag && (id == sentId || classText == sentClasses)) {
                     return currentNode 
                 }
+
                 var startingNode = findStartingNode(currentNode, sentTag, sentId, sentClasses)
-                if(startingNode){
+
+                if(startingNode) {
                     break
                 }
             }

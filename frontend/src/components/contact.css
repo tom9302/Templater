@@ -43,6 +43,10 @@
     font-size: 0.9rem;
 }
 
+.contact .form {
+    color: white;
+}
+
 .contact .input-field {
     width: 100%;
     padding: 12px 16px;

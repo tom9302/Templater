@@ -16,9 +16,9 @@ export function Navbar() {
             }}>
                 <i onClick={() => setLinksDisplay(false)} className="fa-solid fa-x"></i>
                 <HashLink>Home</HashLink>
-                <HashLink>App</HashLink>
-                <HashLink>FAQs</HashLink>
-                <HashLink>About</HashLink>
+                <HashLink to="#app">App</HashLink>
+                <HashLink to="#faqs">FAQs</HashLink>
+                <HashLink to="#contact">Contact</HashLink>
             </div>
         </div>
     )
