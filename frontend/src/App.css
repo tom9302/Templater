@@ -44,7 +44,7 @@
   }
 
   .hero .general-description {
-    width: 35%;
+    width: 45%;
     row-gap: 35px;
     text-align: left;
   }
@@ -100,6 +100,9 @@
 
 body {
   overflow-x: hidden;
+  max-width: 1440px;
+  margin: auto;
+  position: relative;
 }
 
 .main-wrapper {
@@ -109,5 +112,7 @@ body {
 .custom-btn {
   border: none;
   background-color: var(--secondary);
-  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.404);
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.5);
+  font-size: 1.2rem;
+  font-weight: 600;
 }

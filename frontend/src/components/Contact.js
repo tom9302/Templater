@@ -62,7 +62,7 @@ export function Contact() {
 
                 <div className="general-description d-flex flex-column justify-content-center">
 
-                    <div className="d-flex align-items-center gap-4 improve p-4 mt-5">
+                    <div className="d-flex align-items-center gap-4 improve p-4 mt-5 rounded-2">
                         <div className="image"></div>
                         <div className="description">
                             <div className="fw-bold mb-3">Feedback based</div>
@@ -72,7 +72,7 @@ export function Contact() {
                         </div>
 
                     </div>
-                    <div className="d-flex align-items-center gap-4 align-items-center support p-4 mt-3">
+                    <div className="d-flex align-items-center gap-4 align-items-center support p-4 mt-3 rounded-2">
                         <div className="image"></div>
                         <div className="description">
                             <div className="fw-bold mb-3">Support</div>
@@ -109,7 +109,7 @@ export function Contact() {
 
                             <div>Message</div>
                             <textarea
-                                rows="4"
+                                rows="7"
                                 name="message"
                                 placeholder="Message"
                                 className="input-field"

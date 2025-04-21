@@ -1,9 +1,10 @@
 .hero {
-    min-height: 90vh;
+    height: fit-content;
     background: #717deb;
     background: linear-gradient(149deg, #717deb 1%, rgba(57, 74, 240, 1) 45%);
     color: white;
     padding-top: 130px;
+    padding-bottom: 50px;
     overflow: hidden;
 }
 
@@ -14,12 +15,12 @@
 }
 
 .hero .heading {
-    font-size: 2.7rem;
+    font-size: 3.5rem;
     line-height: 100%;
 }
 
 .hero .description {
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 .hero .custom-btn {

@@ -14,8 +14,8 @@ export function TemplateDetails() {
     const [templateCss, setTemplateCss] = useState(null)
     const [templateImage, setTemplateImage] = useState(null)
 
-    const [loading, setLoading] = useState(false)
-    const [fetchStatus, setFetchStatus] = useState(null)
+    const [fetchStatus, setFetchStatus] = useState(false)
+    const [fetchMessage, setFetchMessage] = useState(null)
 
     useEffect(() => {
         const image = localStorage.getItem("image")
@@ -23,8 +23,8 @@ export function TemplateDetails() {
     }, [])
 
     async function handleScrape() {
-        setLoading(true)
-        setFetchStatus("Please wait. This will take less than a minute.")
+        setFetchStatus("loading")
+        setFetchMessage("Please wait. This will take less than a minute.")
         var idSelector = ""
         var classesSelector = ""
 
@@ -38,7 +38,7 @@ export function TemplateDetails() {
         const selector = tag + idSelector + classesSelector
 
         try {
-            const response = await fetch("http://localhost:3001/scrape", {
+            const response = await fetch("/scrape", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -53,16 +53,16 @@ export function TemplateDetails() {
                 setTemplateCss(json.sectionCss)
                 const base64String = btoa(String.fromCharCode(...new Uint8Array(json.screenshot.data)));
                 setTemplateImage(base64String)
-                setLoading(false)
-                setFetchStatus(null)
+                setFetchStatus("success")
+                setFetchMessage(null)
             } else {
-                setLoading(false)
-                setFetchStatus(json.error)
+                setFetchStatus("error")
+                setFetchMessage(json.error)
             }
         } catch(e) {
             console.log(e)
-            setLoading(false)
-            setFetchStatus("Error : could not extract template")
+            setFetchStatus("error")
+            setFetchMessage(e.message)
         } 
     }
 
@@ -72,10 +72,14 @@ export function TemplateDetails() {
     }
 
     async function downloadTemplate() {
-        const response = await fetch("http://localhost:3001/download")
+        const response = await fetch("/download")
         const blob = await response.blob()
         download(blob, "template.html")
     }
+
+    // https://courses.webdevsimplified.com/
+    // section
+    // sc-dVBluf htlnUh
 
     return (
         <div id="app" className="template-details main-wrapper mx-auto">
@@ -121,14 +125,14 @@ export function TemplateDetails() {
 
                 <div className="image d-flex flex-column align-items-center justify-content-center px-2 border rounded-1">
                     {
-                        loading ?
+                        fetchStatus === "loading" ?
                             <div className="d-flex flex-column gap-3 align-items-center justify-content-center h-100">
                                 <div className="loader"></div>
                                 <div>
-                                    {fetchStatus}
+                                    {fetchMessage}
                                 </div>
                             </div>
-                            :
+                            : fetchStatus === "success" ?
                             <>
                                 <img src={`data:image/png;base64,${templateImage}`} width="100%" alt="" />
 
@@ -157,6 +161,12 @@ export function TemplateDetails() {
                                     </div>
                                 </div>
                             </>
+                            : fetchStatus === "error" ?
+                            <div>
+                                {fetchMessage}
+                            </div>
+                            :
+                            null
                     }
                 </div>
             </div>
