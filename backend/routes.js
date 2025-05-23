@@ -13,9 +13,9 @@ router.post("/scrape", async (req, res) => {
         copyReadWrite(sectionHtml, sectionCss)
         const screenshot = await takeScreenshot(selector)
 
-        res.json({ sectionHtml, sectionCss, screenshot })
+        res.status(200).json({ sectionHtml, sectionCss, screenshot })
     } catch(e) {
-        res.json({ error: e.message })
+        res.status(400).json({ error: e.message })
     }
 })
 

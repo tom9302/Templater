@@ -13,7 +13,7 @@ export function Hero() {
                     <div className="description">
                         Effortlessly scrape and save HTML snippets with precision—no coding required.
                     </div>
-                    <CustomBtn text="Extract For Free" />
+                    <CustomBtn text="Extract For Free"  />
                 </div>
 
                 <div className="banner-img w-50">

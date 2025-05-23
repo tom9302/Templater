@@ -37,33 +37,27 @@ export function TemplateDetails() {
 
         const selector = tag + idSelector + classesSelector
 
-        try {
-            const response = await fetch("/scrape", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ url, tag, id, classText, selector })
-            })
-            const json = await response.json()
+        const response = await fetch("/scrape", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ url, tag, id, classText, selector })
+        })
+
+        const json = await response.json()
     
-            if (response.ok) {
-                console.log(json)
-                setTemplateHtml(json.sectionHtml)
-                setTemplateCss(json.sectionCss)
-                const base64String = btoa(String.fromCharCode(...new Uint8Array(json.screenshot.data)));
-                setTemplateImage(base64String)
-                setFetchStatus("success")
-                setFetchMessage(null)
-            } else {
-                setFetchStatus("error")
-                setFetchMessage(json.error)
-            }
-        } catch(e) {
-            console.log(e)
+        if (response.status === 200) {
+            setTemplateHtml(json.sectionHtml)
+            setTemplateCss(json.sectionCss)
+            const base64String = btoa(String.fromCharCode(...new Uint8Array(json.screenshot.data)));
+            setTemplateImage(base64String)
+            setFetchStatus("success")
+            setFetchMessage(json.error)
+        } else {
             setFetchStatus("error")
-            setFetchMessage(e.message)
-        } 
+            setFetchMessage(json.error)
+        }
     }
 
     function copyCode(code) {
@@ -90,6 +84,7 @@ export function TemplateDetails() {
                         URL :
                         <input
                             type="text"
+                            className="rounded-pill"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                         />
@@ -99,6 +94,7 @@ export function TemplateDetails() {
                         Tag :
                         <input
                             type="text"
+                            className="rounded-pill"
                             value={tag}
                             onChange={(e) => setTag(e.target.value)}
                         />
@@ -108,6 +104,7 @@ export function TemplateDetails() {
                         Id :
                         <input
                             type="text"
+                            className="rounded-pill"
                             value={id}
                             onChange={(e) => setId(e.target.value)}
                         />
@@ -117,6 +114,7 @@ export function TemplateDetails() {
                         Class(es) :
                         <input
                             type="text"
+                            className="rounded-pill"
                             value={classText}
                             onChange={(e) => setClassText(e.target.value)}
                         />
