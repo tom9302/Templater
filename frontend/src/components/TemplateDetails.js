@@ -45,6 +45,8 @@ export function TemplateDetails() {
             body: JSON.stringify({ url, tag, id, classText, selector })
         })
 
+        console.log(response)
+
         const json = await response.json()
     
         if (response.status === 200) {
