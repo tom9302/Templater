@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://templater-liart.vercel.app:3001",
+  "proxy": "https://templater-liart.vercel.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
