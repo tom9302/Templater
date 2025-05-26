@@ -6,6 +6,10 @@ const routes = require("./routes")
 
 const app = express();
 
+app.get("/", async (req, res) => {
+    res.send("API working")
+})
+
 app.use(cors())
 app.use(express.json({ limit: "10mb" }))
 app.use("/api", routes)

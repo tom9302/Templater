@@ -5,9 +5,7 @@ const { scrapeTemplate, copyReadWrite, takeScreenshot } = require("./functions/f
 
 const router = express.Router()
 
-router.get("/", async (req, res) => {
-    res.json({ message: "API working" })
-})
+
 
 router.get("/test", async (req, res) => {
     res.json({ message: "fetch successful" })
