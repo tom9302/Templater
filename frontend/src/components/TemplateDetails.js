@@ -37,7 +37,8 @@ export function TemplateDetails() {
 
         const selector = tag + idSelector + classesSelector
 
-        const response = await fetch("/scrape", {
+        //   "proxy": "https://templater-liart.vercel.app",
+        const response = await fetch("https://templater-liart.vercel.app/scrape", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -76,6 +77,7 @@ export function TemplateDetails() {
     // https://courses.webdevsimplified.com/
     // section
     // sc-dVBluf htlnUh
+    // sc-dVBluf iCwPFA
 
     return (
         <div id="app" className="template-details main-wrapper mx-auto">
