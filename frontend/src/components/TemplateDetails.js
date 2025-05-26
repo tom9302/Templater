@@ -38,7 +38,7 @@ export function TemplateDetails() {
         const selector = tag + idSelector + classesSelector
 
         //   "proxy": "https://templater-liart.vercel.app",
-        const response = await fetch("https://templater-liart.vercel.app/scrape", {
+        const response = await fetch("https://templater-liart.vercel.app/api/scrape", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
