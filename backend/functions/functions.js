@@ -1,4 +1,5 @@
-const puppeteer = require("puppeteer")
+const puppeteer = require("puppeteer-core")
+const chromium = require("@sparticuz/chromium")
 const fs = require("fs")
 const path = require("path")
 
@@ -7,7 +8,11 @@ const {
 } = require("./scrapingFunctions")
 
 async function scrapeTemplate(url, selector, tag, id, classes){
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    })
     const page = await browser.newPage()
 
     await page.goto(url)
