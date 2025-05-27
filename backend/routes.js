@@ -19,7 +19,7 @@ router.post("/scrape", async (req, res) => {
 
         res.status(200).json({ sectionHtml, sectionCss, screenshot })
     } catch(e) {
-        res.status(400).json({ error: e.message })
+        res.status(400).json({ error: e.message, url })
     }
 })
 
