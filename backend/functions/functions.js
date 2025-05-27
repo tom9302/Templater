@@ -11,11 +11,9 @@ async function scrapeTemplate(url, selector, tag, id, classes){
     const browser = await puppeteer.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
+      headless: true,
     })
     const page = await browser.newPage()
-
-    console.log(url)
 
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 10000 })
     await page.setViewport({ width: 1280, height: 720 })
