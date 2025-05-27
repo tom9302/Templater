@@ -13,13 +13,13 @@ router.post("/scrape", async (req, res) => {
     const { url, tag, id, classText, selector } = req.body
 
     try {
-        const { sectionHtml, sectionCss } = await scrapeTemplate(url, selector, tag, id, classText)
+        const { sectionHtml, sectionCss } = await scrapeTemplate("https://courses.webdevsimplified.com/", selector, tag, id, classText)
         copyReadWrite(sectionHtml, sectionCss)
         const screenshot = await takeScreenshot(selector)
 
         res.status(200).json({ sectionHtml, sectionCss, screenshot })
     } catch(e) {
-        res.status(400).json({ error: e.message, url })
+        res.status(400).json({ error: e.message })
     }
 })
 
