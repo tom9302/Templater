@@ -15,7 +15,9 @@ async function scrapeTemplate(url, selector, tag, id, classes){
     })
     const page = await browser.newPage()
 
-    await page.goto(url)
+    console.log(url)
+
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 10000 })
     await page.setViewport({ width: 1280, height: 720 })
 
     const sectionHtml = await page.$eval(selector, el => el.outerHTML)
