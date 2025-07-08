@@ -5,10 +5,10 @@ import download from 'downloadjs';
 import "./templateDetails.css"
 
 export function TemplateDetails() {
-    const [url, setUrl] = useState("")
-    const [tag, setTag] = useState("")
+    const [url, setUrl] = useState("https://courses.webdevsimplified.com/")
+    const [tag, setTag] = useState("section")
     const [id, setId] = useState("")
-    const [classText, setClassText] = useState("")
+    const [classText, setClassText] = useState("sc-dVBluf htlnUh")
 
     const [templateHtml, setTemplateHtml] = useState(null)
     const [templateCss, setTemplateCss] = useState(null)
@@ -38,7 +38,8 @@ export function TemplateDetails() {
         const selector = tag + idSelector + classesSelector
 
         //   "proxy": "https://templater-liart.vercel.app",
-        const response = await fetch("https://templater-6y57.vercel.app/api/scrape", {
+        // https://templater-6y57.vercel.app
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/scrape`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -69,7 +70,7 @@ export function TemplateDetails() {
     }
 
     async function downloadTemplate() {
-        const response = await fetch("/download")
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/download`)
         const blob = await response.blob()
         download(blob, "template.html")
     }
@@ -81,6 +82,16 @@ export function TemplateDetails() {
 
     return (
         <div id="app" className="template-details main-wrapper mx-auto">
+
+            <div className="text-center">
+                <h2>Test this app with these classes for different sections from WebDevSimplified :</h2>
+                <div className="my-5 examples-classes">
+                    <h4>Header : <span>sc-dVBluf htlnUh</span></h4>
+                    <h4>Signup form : <span>sc-dVBluf iCwPJg</span></h4>
+                    <h4>Course section : <span>sc-dVBluf fvTFPJ</span></h4>
+                </div>
+            </div>
+            
 
             <div className="d-flex">
                 <div className="d-flex flex-column justify-content-center gap-3 form px-3">
@@ -152,7 +163,7 @@ export function TemplateDetails() {
                                     <div className="d-flex gap-5 justify-content-between mt-3">
                                         <div className="d-flex align-items-center gap-4">
                                             <i className="fa-solid fa-eye"></i>
-                                            <Link to="http://localhost:3001/template" target="_blank">
+                                            <Link to={`${process.env.REACT_APP_BACKEND_URL}/api/template`} target="_blank">
                                                 Preview
                                             </Link>
                                         </div>

@@ -2,9 +2,13 @@
     margin-top: 130px;
 }
 
-.template-details>div {
+.template-details > div {
     flex-direction: column;
     row-gap: 50px;
+}
+
+.template-details .examples-classes span {
+    color: rgb(243, 1, 41);
 }
 
 .template-details .image,

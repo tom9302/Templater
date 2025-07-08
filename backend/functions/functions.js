@@ -1,5 +1,6 @@
-const puppeteer = require("puppeteer-core")
-const chromium = require("@sparticuz/chromium")
+//const puppeteer = require("puppeteer-core")
+const puppeteer = require("puppeteer")
+//const chromium = require("@sparticuz/chromium")
 const fs = require("fs")
 const path = require("path")
 
@@ -8,11 +9,12 @@ const {
 } = require("./scrapingFunctions")
 
 async function scrapeTemplate(url, selector, tag, id, classes){
-    const browser = await puppeteer.launch({
+    /* const browser = await puppeteer.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath(),
       headless: chromium.headless,
-    })
+    }) */
+    const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
     await page.goto(url)
@@ -64,11 +66,12 @@ function copyReadWrite(html, css) {
 }
 
 async function takeScreenshot(selector) {
-    const browser = await puppeteer.launch({
+    /* const browser = await puppeteer.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath(),
       headless: chromium.headless,
-    });
+    }); */
+    const browser = await puppeteer.launch()
     const page = await browser.newPage();
 
     const templatePath = path.resolve("template.html")
